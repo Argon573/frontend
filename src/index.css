@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+
+@theme {
+  --color-main: grey;
+  --color-secondary: #009140;
+}

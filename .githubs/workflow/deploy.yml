@@ -1,0 +1,31 @@
+name: Remote Auto-Deploy to Local Nginx
+
+on:
+  push:
+    branches: [ master ] # Триггер сработает при пуше в ветку master
+
+jobs:
+  build-and-deploy:
+    runs-on: [ self-hosted, Linux, X64 ] # Указываем теги вашего раннера
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20 # Или ваша версия Node.js
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci # Чистая установка зависимостей из package-lock.json
+
+      - name: Build project
+        run: npm run build # Собирает проект в папку dist
+
+      - name: Deploy to local Nginx directory
+        run: |
+          # Копируем содержимое собранной папки dist прямо в ту папку,
+          # которую сейчас читает ваш Docker-контейнер Nginx
+          rsync -av --delete ./dist/ /home/akhowym/Документы/frontend/dist/

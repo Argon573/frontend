@@ -66,7 +66,7 @@ const Footer = () => {
         >
             {/* ХЭНДЛ: Полосочка сверху шторки, за которую пользователь БУДЕТ ТЯНУТЬ */}
             <div
-                className="w-full py-2 -mt-2 cursor-grab active:cursor-grabbing flex justify-center items-center touch-action-none"
+                className="w-full py-2 -mt-2 cursor-grab active:cursor-grabbing flex justify-center items-center touch-action-none touch-none"
                 onPointerDown={handlePointerDown}
                 onPointerMove={handlePointerMove}
                 onPointerUp={handlePointerUp}
@@ -77,7 +77,7 @@ const Footer = () => {
             <SearchField />
 
             {/* КОНТЕНТНАЯ ЧАСТЬ: скрываем элементы по мере изменения высоты */}
-            <div className="flex-1 flex flex-col gap-6 overflow-hidden mt-2">
+            <div className="flex-1 flex flex-col gap-6 overflow-hidden mt-2 touch-pan-y overflow-y-auto">
 
                 {/* Категории прячем, когда шторка свернута до минимума */}
                 <div className={`transition-all duration-200 ${height > MIN_HEIGHT + 20 && height < MAX_HEIGHT - 20 ? 'opacity-100' : 'opacity-0 pointer-events-none'} p-10`}>

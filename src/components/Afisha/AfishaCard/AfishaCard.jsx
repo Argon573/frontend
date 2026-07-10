@@ -1,6 +1,14 @@
+import { NavLink } from 'react-router-dom';
+
+
+
 const AfishaCard = ({mero}) => {
     return (
-        <div className="w-80 h-53 flex flex-col hover:border-black">
+        <NavLink
+            to={`/concert/${mero.id}`}
+            state={{concert: mero}}
+            className="w-80 h-53 flex flex-col hover:border-black"
+        >
             <div className="rounded-lg h-45">
                 <img
                     alt={mero.title}
@@ -16,7 +24,7 @@ const AfishaCard = ({mero}) => {
         {mero.location}
                 </span>
             </div>
-        </div>
+        </NavLink>
     )
 }
 

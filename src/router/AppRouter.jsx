@@ -5,6 +5,7 @@ import AppShell from '../components/layouts/AppShell.jsx'; // ваша карт�
 import MainMapPage from '../components/MainMapPage/MainMapPage.jsx';
 import ProfilePage from '../components/ProfilePage/ProfilePage.jsx';
 import SettingsPage from '../components/SettingsPage/SettingsPage.jsx';
+import ConcertCard from '../components/afisha/Concert/ConcertCard.jsx';
 
 export function AppRouter() {
     return (
@@ -21,10 +22,14 @@ export function AppRouter() {
                 {/* '/settings' — страница настроек */}
                 <Route path="/settings" element={<SettingsPage />} />
 
+                <Route path="/concert/:concertId" element={<ConcertCard />} />
+
             </Route>
         </Routes>
     );
 }
+
+// TODO element for concert card
 
 //<Route path="/profile" element={<ProfilePage />} />
 //<Route path="/settings" element={<SettingsPage />} />
